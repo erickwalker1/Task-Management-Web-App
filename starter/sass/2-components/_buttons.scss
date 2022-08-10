@@ -1,0 +1,37 @@
+@use "../0-base/colors" as color;
+
+.btn {
+    color: color.$color-white; // later, if a board doesn't contain columns disable button and change color to disabled color
+    cursor: pointer;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    transition: all 0.3s;
+    background: color.$color-primary;
+    border-radius: 100px;
+    &:hover {
+        background: color.$color-secondary;
+    }
+    &-column {
+        margin: 1rem 7rem;
+    }
+    &-toggle {
+        cursor: pointer;
+        margin: 0 1rem 0 0.3rem;
+        border: none;
+        background: none;
+    }
+}
+
+.create {
+    color: color.$color-primary;
+    font-size: 1rem;
+    &-board {
+        border: none;
+        cursor: pointer;
+        background: #fff;
+    }
+}
+
+.hide:hover {
+    fill: color.$color-primary;
+}

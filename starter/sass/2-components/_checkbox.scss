@@ -1,0 +1,48 @@
+@use "../0-base/colors" as color;
+
+input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    display: none;
+    // visibility: hidden;
+}
+
+// container that holds toggle button
+label {
+    float: right;
+    width: 48px;
+    height: 23px;
+    cursor: pointer;
+    position: relative;
+    background: color.$color-primary;
+    text-indent: -9999px;
+    border-radius: 100px;
+}
+
+// white toggle button
+label:after {
+    top: 3.5px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    content: "";
+    position: absolute;
+    transition: 0.3s;
+    background: #fff;
+    border-radius: 90px;
+}
+
+// once box is checked, change label color
+input:checked + label {
+    background: color.$color-primary;
+}
+
+// animation after box is checked
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 45px;
+}

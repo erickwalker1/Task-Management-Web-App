@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./starter/assets/favicon-32x32.png"
+    />
+
+    <!-- Stylesheet  -->
+    <link rel="stylesheet" href="./starter/css/main.css" />
+
+    <!-- Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Kanban Task Management Web Application</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo-container">
+          <img
+            src="./starter/assets/logo-light.svg"
+            alt="Logo Light"
+            class="logo"
+          />
+          <h1 class="sidebar__heading">kanban</h1>
+        </div>
+
+        <div class="board-container">
+          <small class="board-count"
+            >all boards (<span class="count">3</span>)</small
+          >
+          <!-- Board List -->
+          <div class="board-list">
+            <ul class="list">
+              <li class="list__item">
+                <img
+                  src="./starter/assets/icon-board.svg"
+                  alt="Board"
+                  class="board"
+                />
+                <p><a href="#" class="board-link">Platform Launch</a></p>
+              </li>
+
+              <li class="list__item">
+                <img
+                  src="./starter/assets/icon-board.svg"
+                  alt="Board"
+                  class="board"
+                />
+                <p><a href="#" class="board-link">Marketing Plan</a></p>
+              </li>
+
+              <li class="list__item">
+                <img
+                  src="./starter/assets/icon-board.svg"
+                  alt="Board"
+                  class="board"
+                />
+                <p>
+                  <a href="#" class="board-link">Roadmap To Developer</a>
+                </p>
+              </li>
+
+              <li class="list__item">
+                <img
+                  src="./starter/assets/icon-board create.svg"
+                  alt="Board"
+                  class="board"
+                />
+                <button class="create-board">
+                  <span class="create">+ Create New Board</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Toggle Theme Container -->
+        <div class="toggle">
+          <div class="toggle-container">
+            <img
+              src="./starter/assets/icon-light-theme.svg"
+              alt="Light Theme"
+              class="light"
+            />
+            <input type="checkbox" id="switch" name="theme" />
+            <label for="switch">Toggle</label>
+            <img
+              src="./starter/assets/icon-dark-theme.svg"
+              alt="Dark Theme"
+              class="dark"
+            />
+          </div>
+
+          <div class="toggle-hide">
+            <button class="btn-toggle">
+              <img
+                src="./starter/assets/icon-hide-sidebar.svg"
+                alt="Hide"
+                class="hide"
+              />
+            </button>
+
+            <p>Hide Sidebar</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Header -->
+      <header class="header">
+        <h2 class="header__heading">Platform Launch</h2>
+        <div class="header__actions">
+          <button class="btn">+ Add New Task</button>
+          <img
+            src="./starter/assets/icon-vertical-ellipsis.svg"
+            alt="Vertical Ellipsis"
+            class="vert-ellipsis"
+          />
+        </div>
+      </header>
+      <!-- Board -->
+      <main class="boards">
+        <div class="empty">
+          <p class="empty__text">
+            This board is empty. Create a new column to get started.
+          </p>
+          <button class="btn btn-column">+ Add New Column</button>
+        </div>
+      </main>
+    </div>
+    <script src="./starter/index.js"></script>
+  </body>
+</html>

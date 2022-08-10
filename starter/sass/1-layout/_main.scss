@@ -1,0 +1,16 @@
+@use "../0-base/colors" as color;
+
+.boards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color.$color-lightgrey;
+}
+
+.empty {
+    color: color.$color-mediumgrey;
+    &__text {
+        color: inherit;
+        word-spacing: 1px;
+    }
+}
