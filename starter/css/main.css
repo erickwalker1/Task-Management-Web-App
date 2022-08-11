@@ -46,18 +46,23 @@ body {
 }
 
 .main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
   background: #f4f7fd;
+  grid-template-rows: 1fr;
 }
 
 .empty {
   color: #828fa3;
+  place-self: center;
 }
 .empty__text {
   color: inherit;
   word-spacing: 1px;
+}
+
+.view {
+  margin-top: auto;
+  margin-bottom: 2rem;
 }
 
 .header {
@@ -165,6 +170,11 @@ body {
   margin: 0 1rem 0 0.3rem;
   border: none;
   background: none;
+}
+.btn-toggle-view {
+  display: none;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
 }
 
 .create {

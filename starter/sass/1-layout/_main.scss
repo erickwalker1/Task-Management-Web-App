@@ -1,16 +1,27 @@
 @use "../0-base/colors" as color;
 
 .main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
     background: color.$color-lightgrey;
+    grid-template-rows: 1fr;
+
+    // < ----- ONCE COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
+    // gap: 2rem;
+    // padding: 2rem;
+    // grid-template-areas: " main main main main main"; // 1200px & up screen size
+    // grid-template-columns: repeat(5, minmax(210px, 225px)); // 1200px & up screen size
 }
 
 .empty {
     color: color.$color-mediumgrey;
+    place-self: center;
     &__text {
         color: inherit;
         word-spacing: 1px;
     }
+}
+
+.view {
+    margin-top: auto;
+    margin-bottom: 2rem;
 }

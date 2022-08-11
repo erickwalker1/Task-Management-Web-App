@@ -19,6 +19,12 @@
         margin: 0 1rem 0 0.3rem;
         border: none;
         background: none;
+        &-view {
+            // < ----- When Board List Is Collapsed Switch Display To Block ----- >
+            display: none;
+            border-top-left-radius: 0%;
+            border-bottom-left-radius: 0%;
+        }
     }
 }
 
