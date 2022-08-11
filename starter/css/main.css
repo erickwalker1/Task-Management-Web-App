@@ -41,11 +41,11 @@ body {
   grid-area: header;
 }
 
-.boards {
+.main {
   grid-area: main;
 }
 
-.boards {
+.main {
   display: flex;
   align-items: center;
   justify-content: center;
