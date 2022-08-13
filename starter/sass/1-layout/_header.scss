@@ -1,4 +1,5 @@
 @use "../0-base/colors" as color;
+@use "../0-base/queries" as query;
 
 .header {
     border: 1px solid color.$color-board;
@@ -7,17 +8,12 @@
     align-items: center;
     border-left: none;
     justify-content: space-between;
-    &__heading {
-        flex: 6;
-    }
     &__actions {
-        flex: 1;
         display: flex;
-        justify-content: space-between;
     }
 }
 
 .vert-ellipsis {
-    height: 100%;
     align-self: center;
+    margin-left: 1.5rem;
 }

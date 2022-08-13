@@ -2,7 +2,7 @@
     height: 100%;
     display: grid;
     grid-template-rows: 10vh 1fr;
-    grid-template-columns: 18vw repeat(4, 1fr);
+    grid-template-columns: minmax(225px, 15.625em) repeat(4, 1fr);
     // throw above code into a mixin
 
     grid-template-areas:
@@ -14,7 +14,7 @@
     height: 100%;
     display: grid;
     grid-template-rows: 10vh 1fr;
-    grid-template-columns: 18vw repeat(4, 1fr);
+    grid-template-columns: minmax(200px, 15.625em) repeat(4, 1fr);
     // throw above code into a mixin
 
     grid-template-areas:
