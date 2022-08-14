@@ -24,6 +24,13 @@ body {
   grid-template-columns: minmax(225px, 15.625em) repeat(4, 1fr);
   grid-template-areas: "sidebar header header header header" "sidebar main main main main ";
 }
+@media (max-width: 37.5em) {
+  .container {
+    grid-template-rows: 7vh 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "header header header header header" "main main main main main ";
+  }
+}
 
 .container-hide-sidebar {
   height: 100%;
@@ -50,7 +57,6 @@ body {
   background: #f4f7fd;
   grid-template-rows: 1fr;
 }
-
 .empty {
   color: #828fa3;
   place-self: center;
@@ -73,6 +79,33 @@ body {
   border-left: none;
   justify-content: space-between;
 }
+@media (max-width: 37.5em) {
+  .header {
+    left: 0;
+    right: 0;
+    height: 7vh;
+    border: none;
+    position: fixed;
+  }
+}
+.header__logo {
+  display: none;
+}
+@media (max-width: 37.5em) {
+  .header__logo {
+    height: 20px;
+    display: inline;
+    align-self: center;
+  }
+}
+.header__logo-container {
+  display: block;
+}
+@media (max-width: 37.5em) {
+  .header__logo-container {
+    display: inline-flex;
+  }
+}
 .header__actions {
   display: flex;
 }
@@ -87,6 +120,11 @@ body {
   border: 1px solid #e4ebfa;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 37.5em) {
+  .sidebar {
+    display: none;
+  }
 }
 .sidebar__heading {
   color: #000112;
@@ -182,6 +220,29 @@ body {
   border-top-left-radius: 0%;
   border-bottom-left-radius: 0%;
 }
+.btn-laptop {
+  display: inline;
+}
+.btn-laptop:disabled {
+  background: rgba(98, 95, 199, 0.3921568627);
+}
+@media (max-width: 37.5em) {
+  .btn-laptop {
+    display: none;
+  }
+}
+.btn-mobile {
+  display: none;
+  padding: 0.5rem 1.5rem;
+}
+@media (max-width: 37.5em) {
+  .btn-mobile {
+    display: inline;
+  }
+  .btn-mobile:disabled {
+    background: rgba(98, 95, 199, 0.3921568627);
+  }
+}
 
 .create {
   color: #635fc7;
@@ -194,6 +255,22 @@ body {
 
 .hide:hover {
   fill: #635fc7;
+}
+
+.icon-plus {
+  width: 20px;
+}
+
+.icon-down {
+  display: none;
+  height: 10px;
+  align-self: center;
+  margin-left: 0.5rem;
+}
+@media (max-width: 37.5em) {
+  .icon-down {
+    display: inline;
+  }
 }
 
 input[type=checkbox] {

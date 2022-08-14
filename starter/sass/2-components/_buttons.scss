@@ -1,4 +1,5 @@
 @use "../0-base/colors" as color;
+@use "../0-base/queries" as query;
 
 .btn {
     color: color.$color-white; // later, if a board doesn't contain columns disable button and change color to disabled color
@@ -26,6 +27,27 @@
             border-bottom-left-radius: 0%;
         }
     }
+
+    &-laptop {
+        display: inline;
+        &:disabled {
+            background: color.$color-primary-disabled; // default -- once column is added, 'disabled' attribute will be removed
+        }
+        @media (max-width: query.$breakpoint-mobile) {
+            display: none;
+        }
+    }
+
+    &-mobile {
+        display: none;
+        padding: 0.5rem 1.5rem;
+        @media (max-width: query.$breakpoint-mobile) {
+            display: inline;
+            &:disabled {
+                background: color.$color-primary-disabled; // default -- once column is added, 'disabled' attribute will be removed
+            }
+        }
+    }
 }
 
 .create {
@@ -39,4 +61,19 @@
 
 .hide:hover {
     fill: color.$color-primary;
+}
+
+// ICONS
+.icon-plus {
+    width: 20px;
+}
+
+.icon-down {
+    display: none;
+    height: 10px;
+    align-self: center;
+    margin-left: 0.5rem;
+    @media (max-width: query.$breakpoint-mobile) {
+        display: inline;
+    }
 }

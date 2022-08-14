@@ -6,6 +6,10 @@
     border: 1px solid color.$color-board;
     display: flex;
     flex-direction: column;
+    @media (max-width: query.$breakpoint-mobile) {
+        display: none;
+    }
+
     &__heading {
         color: color.$color-main;
         font-size: 2rem;

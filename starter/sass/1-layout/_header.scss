@@ -8,6 +8,29 @@
     align-items: center;
     border-left: none;
     justify-content: space-between;
+    @media (max-width: query.$breakpoint-mobile) {
+        // temporary -- this probably will apply to larger screens as well in order for the board area to scroll keeping header in place
+        left: 0;
+        right: 0;
+        height: 7vh;
+        border: none;
+        position: fixed;
+    }
+    &__logo {
+        display: none;
+        @media (max-width: query.$breakpoint-mobile) {
+            height: 20px;
+            display: inline;
+            align-self: center;
+        }
+
+        &-container {
+            display: block;
+            @media (max-width: query.$breakpoint-mobile) {
+                display: inline-flex;
+            }
+        }
+    }
     &__actions {
         display: flex;
     }

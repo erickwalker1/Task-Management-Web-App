@@ -84,7 +84,7 @@
                   class="board"
                 />
                 <p class="list__paragraph">
-                  <button class="create-board">
+                  <button type="button" class="create-board">
                     <span class="create">+ New Board</span>
                   </button>
                 </p>
@@ -110,7 +110,7 @@
           </div>
 
           <div class="toggle-hide">
-            <button class="btn-toggle">
+            <button type="button" class="btn-toggle">
               <img
                 src="./starter/assets/icon-hide-sidebar.svg"
                 alt="Hide"
@@ -124,9 +124,33 @@
       </aside>
       <!-- Header -->
       <header class="header">
-        <h2 class="header__heading">Platform Launch</h2>
+        <div class="header__logo-container">
+          <!-- Logo Becomes Visible @ Mobile View -->
+          <img
+            src="./starter/assets/logo-light.svg"
+            alt="Logo Light"
+            class="header__logo"
+          />
+          <h2 class="header__heading">Platform Launch</h2>
+          <!-- Icon Becomes Visible @ Mobile View -->
+          <img
+            src="./starter/assets/icon-chevron-down.svg"
+            alt="Chevron Down"
+            class="icon-down"
+          />
+        </div>
         <div class="header__actions">
-          <button class="btn">+ Add New Task</button>
+          <!-- Button Becomes Visible @ Mobile View -->
+          <button type="button" disabled class="btn btn-mobile">
+            <img
+              src="./starter/assets/icon-plus.svg"
+              alt="Add"
+              class="icon-plus"
+            />
+          </button>
+          <button type="button" disabled class="btn btn-laptop">
+            + Add New Task
+          </button>
           <img
             src="./starter/assets/icon-vertical-ellipsis.svg"
             alt="Vertical Ellipsis"
@@ -140,11 +164,11 @@
           <p class="empty__text">
             This board is empty. Create a new column to get started.
           </p>
-          <button class="btn btn-column">+ Add New Column</button>
+          <button type="button" class="btn btn-column">+ Add New Column</button>
         </div>
         <!-- Expand Navigation -->
         <div class="view">
-          <button class="btn btn-toggle-view">
+          <button type="button" class="btn btn-toggle-view">
             <img
               src="./starter/assets/icon-show-sidebar.svg"
               alt="Show Sidebar Icon"
