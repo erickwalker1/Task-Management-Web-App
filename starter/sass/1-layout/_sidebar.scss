@@ -1,9 +1,8 @@
-@use "../0-base/colors" as color;
 @use "../0-base/queries" as query;
 
 .sidebar {
-    color: color.$color-mediumgrey;
-    border: 1px solid color.$color-board;
+    color: inherit;
+    border: 1px solid var(--color-line);
     display: flex;
     flex-direction: column;
     @media (max-width: query.$breakpoint-mobile) {
@@ -11,7 +10,7 @@
     }
 
     &__heading {
-        color: color.$color-main;
+        color: inherit;
         font-size: 2rem;
     }
 }
@@ -65,7 +64,6 @@
     }
     &-container {
         height: 5vh;
-        background: color.$color-lightgrey;
         border-radius: 9px;
         margin-bottom: 2rem;
 

@@ -1,9 +1,7 @@
-@use "../0-base/colors" as color;
 @use "../0-base/queries" as query;
 
 .main {
     display: grid;
-    background: color.$color-lightgrey;
     grid-template-rows: 1fr;
 
     // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
@@ -21,7 +19,7 @@
 }
 
 .empty {
-    color: color.$color-mediumgrey;
+    color: inherit;
     place-self: center;
     &__text {
         color: inherit;

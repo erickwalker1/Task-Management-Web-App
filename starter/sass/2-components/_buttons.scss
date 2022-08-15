@@ -1,16 +1,15 @@
-@use "../0-base/colors" as color;
 @use "../0-base/queries" as query;
 
 .btn {
-    color: color.$color-white; // later, if a board doesn't contain columns disable button and change color to disabled color
+    color: #fff; // later, if a board doesn't contain columns disable button and change color to disabled color
     cursor: pointer;
     border: none;
     padding: 0.9rem 1.5rem;
     transition: all 0.3s;
-    background: color.$color-primary;
+    background: var(--color-primary);
     border-radius: 100px;
     &:hover {
-        background: color.$color-secondary;
+        background: var(--color-secondary);
     }
     &-column {
         margin: 1rem 7rem;
@@ -31,7 +30,9 @@
     &-laptop {
         display: inline;
         &:disabled {
-            background: color.$color-primary-disabled; // default -- once column is added, 'disabled' attribute will be removed
+            background: var(
+                --color-primary-disabled
+            ); // default -- once column is added, 'disabled' attribute will be removed
         }
         @media (max-width: query.$breakpoint-mobile) {
             display: none;
@@ -44,23 +45,24 @@
         @media (max-width: query.$breakpoint-mobile) {
             display: inline;
             &:disabled {
-                background: color.$color-primary-disabled; // default -- once column is added, 'disabled' attribute will be removed
+                background: var(
+                    --color-primary-disabled
+                ); // default -- once column is added, 'disabled' attribute will be removed
             }
         }
     }
 }
 
 .create {
-    color: color.$color-primary;
+    color: var(--color-primary);
     &-board {
         border: none;
         cursor: pointer;
-        background: #fff;
     }
 }
 
 .hide:hover {
-    fill: color.$color-primary;
+    fill: var(--color-primary);
 }
 
 // ICONS
