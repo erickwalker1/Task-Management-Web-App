@@ -79,3 +79,11 @@
         display: inline;
     }
 }
+
+.icon-board {
+    z-index: 10;
+    margin-right: 1rem;
+    &--create {
+        margin-right: 1rem;
+    }
+}

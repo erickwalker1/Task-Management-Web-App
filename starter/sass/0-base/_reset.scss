@@ -15,6 +15,7 @@ html {
     --font-primary: "Plus Jakarta Sans", sans-serif;
 
     // Button
+    --color-white: #fff;
     --color-primary: #635fc7;
     --color-secondary: #a8a4ff;
     --color-primary-disabled: #625fc764;
@@ -72,5 +73,5 @@ body {
 }
 
 .create-board {
-    background: var(--color-white);
+    background: var(--color-light);
 }
