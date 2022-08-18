@@ -82,13 +82,18 @@ body {
     grid-template-areas: "header header header header header" "main main main main main ";
   }
 }
-
-.container-hide-sidebar {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 10vh 1fr;
+.container.active {
   grid-template-columns: minmax(200px, 15.625em) repeat(4, 1fr);
   grid-template-areas: "sidebar header header header header" "main main main main main ";
+}
+.container.active .toggle {
+  display: none;
+}
+.container.active .board-container {
+  display: none;
+}
+.container.active .btn-toggle-view {
+  display: block;
 }
 
 .sidebar {
@@ -228,7 +233,7 @@ body {
   transition-delay: 0.3s;
 }
 .list__item:hover:not(:last-child) .icon-board {
-  filter: brightness(2);
+  fill: var(--color-white);
   transition: 0.2s;
   transition-delay: 0.3s;
 }
@@ -243,6 +248,20 @@ body {
   z-index: 10;
   position: relative;
   text-decoration: none;
+}
+.list li:last-child span {
+  color: var(--color-primary);
+}
+.list li:last-child span:hover {
+  color: var(--color-secondary);
+  transition: 0.3s;
+}
+.list li:last-child .icon-board--create {
+  fill: var(--color-primary);
+}
+.list li:last-child:hover .icon-board--create {
+  fill: var(--color-secondary);
+  transition: 0.3s;
 }
 
 .board-container {
@@ -329,9 +348,6 @@ body {
   }
 }
 
-.create {
-  color: var(--color-primary);
-}
 .create-board {
   border: none;
   cursor: pointer;
@@ -339,6 +355,10 @@ body {
 
 .hide:hover {
   fill: var(--color-primary);
+}
+
+.icon-board {
+  fill: var(--color-text);
 }
 
 .icon-plus {

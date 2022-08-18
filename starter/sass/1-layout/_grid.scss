@@ -18,18 +18,25 @@
             "header header header header header"
             "main main main main main ";
     }
-}
+    // <--- Layout Change ~ Behavior Is Snappy How To Transition Grid Item ? --->
+    &.active {
+        grid-template-columns: minmax(200px, 15.625em) repeat(4, 1fr);
+        grid-template-areas:
+            "sidebar header header header header"
+            "main main main main main ";
+    }
 
-.container-hide-sidebar {
-    height: 100%;
-    display: grid;
-    grid-template-rows: 10vh 1fr;
-    grid-template-columns: minmax(200px, 15.625em) repeat(4, 1fr);
-    // throw above code into a mixin
+    &.active .toggle {
+        display: none;
+    }
 
-    grid-template-areas:
-        "sidebar header header header header"
-        "main main main main main ";
+    &.active .board-container {
+        display: none;
+    }
+
+    &.active .btn-toggle-view {
+        display: block;
+    }
 }
 
 .sidebar {

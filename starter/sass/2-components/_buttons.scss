@@ -53,12 +53,9 @@
     }
 }
 
-.create {
-    color: var(--color-primary);
-    &-board {
-        border: none;
-        cursor: pointer;
-    }
+.create-board {
+    border: none;
+    cursor: pointer;
 }
 
 .hide:hover {
@@ -66,6 +63,11 @@
 }
 
 // ICONS
+
+.icon-board {
+    fill: var(--color-text);
+}
+
 .icon-plus {
     width: 20px;
 }
