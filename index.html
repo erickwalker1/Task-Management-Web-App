@@ -39,13 +39,12 @@
 
         <div class="board-container">
           <small class="board-count"
-            >all boards (<span class="count">3</span>)</small
+            >all boards (<span id="count"></span>)</small
           >
           <!-- Board List -->
           <div class="board-list">
             <ul class="list">
-              <li class="list__item list__item--active">
-                <!-- Board Icon -->
+              <!-- <li class="list__item list__item--active">
                 <svg
                   class="icon-board"
                   width="16"
@@ -62,7 +61,6 @@
               </li>
 
               <li class="list__item">
-                <!-- Board Icon -->
                 <svg
                   class="icon-board"
                   width="16"
@@ -79,7 +77,6 @@
               </li>
 
               <li class="list__item">
-                <!-- Board Icon -->
                 <svg
                   class="icon-board"
                   width="16"
@@ -93,9 +90,9 @@
                 <p class="list__paragraph">
                   <a href="#" class="list-link">Roadmap</a>
                 </p>
-              </li>
+              </li> -->
 
-              <li class="list__item">
+              <li id="board-create" class="list__item">
                 <!-- Board Icon: Create -->
                 <svg
                   class="icon-board--create"
@@ -184,12 +181,20 @@
       </header>
       <!-- Board -->
       <main class="main">
-        <div class="empty">
-          <p class="empty__text">
-            This board is empty. Create a new column to get started.
-          </p>
-          <button type="button" class="btn btn-column">+ Add New Column</button>
-        </div>
+        <!-- Column List : Columns will be appended here when user adds another column : columns will be list items -->
+        <ul class="column-list">
+          <!-- Each column ('status') will contain a 'list' of task items (task list items will render the specific task view when clicked ) -->
+          <div class="empty active">
+            <!-- as long as there are no columns, the empty div will be active | once column added toggle class -->
+            <p class="empty__text">
+              This board is empty. Create a new column to get started.
+            </p>
+            <button type="button" class="btn btn-column">
+              + Add New Column
+            </button>
+          </div>
+        </ul>
+
         <!-- Expand Navigation -->
         <div class="view">
           <button type="button" class="btn btn-toggle-view">
@@ -202,6 +207,6 @@
         </div>
       </main>
     </div>
-    <script src="./starter/index.js"></script>
+    <script src="./starter/controller.js" type="module"></script>
   </body>
 </html>

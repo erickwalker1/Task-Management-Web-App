@@ -40,6 +40,7 @@ html.transition *:after {
 
 body {
   height: 100vh;
+  overflow: hidden;
   font-family: var(--font-primary);
 }
 
@@ -108,8 +109,12 @@ body {
   grid-area: main;
 }
 
-.main {
+/* Styling applies only if there are no columns */
+.column-list {
+  gap: 2rem;
+  height: 92%;
   display: grid;
+  place-items: center;
   grid-template-rows: 1fr;
 }
 .empty {

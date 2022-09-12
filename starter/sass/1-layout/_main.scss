@@ -1,14 +1,33 @@
 @use "../0-base/queries" as query;
 
 .main {
-    display: grid;
-    grid-template-rows: 1fr;
+    // display: grid;
+    // grid-template-rows: 1fr;
 
     // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
     // gap: 2rem;
     // padding: 2rem;
     // grid-template-areas: " main main main main main"; // 1200px & up screen size
     // grid-template-columns: repeat(5, minmax(210px, 225px)); // 1200px & up screen size
+    // grid-auto-columns: minmax(210px, 15.625em); // as new columns are added, their size is set
+
+    @media (max-width: query.$breakpoint-mobile) {
+        // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
+        // gap: 2rem;
+        // padding: 2rem;
+        // grid-template-columns: repeat(4, minmax(225px, 15.625em)); // mobile
+    }
+}
+
+/* Styling applies only if there are no columns */
+.column-list {
+    gap: 2rem;
+    height: 92%;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 1fr;
+    // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
+    // grid-template-columns: repeat(auto-fit, minmax(17.5em, 18.33em));
 
     @media (max-width: query.$breakpoint-mobile) {
         // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
@@ -26,6 +45,15 @@
         word-spacing: 1px;
     }
 }
+
+// .active {
+//     display: block;
+// }
+
+// once a column is added to a board view, add class to empty div
+// .inactive {
+//     display: none;
+// }
 
 .view {
     margin-top: auto;

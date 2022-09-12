@@ -48,6 +48,7 @@ html.transition *:after {
 
 body {
     height: 100vh;
+    overflow: hidden;
     font-family: var(--font-primary);
 }
 
