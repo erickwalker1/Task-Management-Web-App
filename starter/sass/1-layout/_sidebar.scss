@@ -27,6 +27,7 @@
 .list {
     list-style: none;
     &__item {
+        cursor: pointer;
         margin: 0.75rem 0;
         height: 3em;
         display: flex;
@@ -37,7 +38,7 @@
         &:first-child {
             margin-top: 2rem;
         }
-        &:not(:last-child)::before {
+        &::before {
             top: 0;
             left: 0;
             width: 3px;
@@ -49,21 +50,20 @@
             background: var(--color-primary);
             margin-right: 1rem;
         }
-        &:hover::before,
-        &--active:not(:last-child)::before {
+        &:hover::before {
             width: 90%;
             transform: scaleY(1);
             border-radius: 0 25px 25px 0;
         }
 
         // <!---  changes list items text color to white on hover --->
-        &:hover:not(:last-child) {
+        &:hover {
             color: var(--color-white);
             transition: 0.2s;
             transition-delay: 0.3s;
         }
         // <!---  changes list board icon to white on hover --->
-        &:hover:not(:last-child) .icon-board {
+        &:hover .icon-board {
             fill: var(--color-white);
             transition: 0.2s;
             transition-delay: 0.3s;
@@ -72,10 +72,26 @@
         // <!---  applies to element with active board class being viewed --->
         &--active {
             color: var(--color-white);
+            &::before {
+                width: 90%;
+                transform: scaleY(1);
+                border-radius: 0 25px 25px 0;
+            }
         }
         &--active > .icon-board {
             filter: brightness(2);
         }
+    }
+
+    &__create {
+        cursor: pointer;
+        margin: 0.75rem 0;
+        height: 3em;
+        display: flex;
+        position: relative;
+        align-items: center;
+        white-space: nowrap;
+        padding-left: 1.5rem;
     }
 
     &-link:link,

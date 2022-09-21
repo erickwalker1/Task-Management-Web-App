@@ -3,14 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./starter/assets/favicon-32x32.png"
-    />
-
     <!-- Stylesheet  -->
     <link rel="stylesheet" href="./starter/css/main.css" />
 
@@ -44,55 +36,7 @@
           <!-- Board List -->
           <div class="board-list">
             <ul class="list">
-              <!-- <li class="list__item list__item--active">
-                <svg
-                  class="icon-board"
-                  width="16"
-                  height="16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z"
-                  />
-                </svg>
-                <p class="list__paragraph">
-                  <a href="#" class="list-link">Platform Launch</a>
-                </p>
-              </li>
-
-              <li class="list__item">
-                <svg
-                  class="icon-board"
-                  width="16"
-                  height="16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z"
-                  />
-                </svg>
-                <p class="list__paragraph">
-                  <a href="#" class="list-link">Marketing Plan</a>
-                </p>
-              </li>
-
-              <li class="list__item">
-                <svg
-                  class="icon-board"
-                  width="16"
-                  height="16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z"
-                  />
-                </svg>
-                <p class="list__paragraph">
-                  <a href="#" class="list-link">Roadmap</a>
-                </p>
-              </li> -->
-
-              <li id="board-create" class="list__item">
+              <li id="board-create" class="list__create">
                 <!-- Board Icon: Create -->
                 <svg
                   class="icon-board--create"
@@ -152,7 +96,7 @@
             alt="Logo Light"
             class="header__logo"
           />
-          <h2 class="header__heading">Platform Launch</h2>
+          <h2 class="header__heading"></h2>
           <!-- Icon Becomes Visible @ Mobile View -->
           <img
             src="./starter/assets/icon-chevron-down.svg"
@@ -181,18 +125,16 @@
       </header>
       <!-- Board -->
       <main class="main">
-        <!-- Column List : Columns will be appended here when user adds another column : columns will be list items -->
         <ul class="column-list">
-          <!-- Each column ('status') will contain a 'list' of task items (task list items will render the specific task view when clicked ) -->
-          <div class="empty active">
-            <!-- as long as there are no columns, the empty div will be active | once column added toggle class -->
+          <!-- <div class="empty active">
+            
             <p class="empty__text">
               This board is empty. Create a new column to get started.
             </p>
             <button type="button" class="btn btn-column">
               + Add New Column
             </button>
-          </div>
+          </div> -->
         </ul>
 
         <!-- Expand Navigation -->
@@ -207,6 +149,6 @@
         </div>
       </main>
     </div>
-    <script src="./starter/controller.js" type="module"></script>
+    <script src="./starter/js/controller.js" type="module"></script>
   </body>
 </html>

@@ -1,9 +1,11 @@
 @use "../0-base/queries" as query;
 
 .main {
-    // display: grid;
-    // grid-template-rows: 1fr;
-
+    padding: 2rem 0;
+    overflow-x: scroll;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    scrollbar-width: none;
     // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
     // gap: 2rem;
     // padding: 2rem;
@@ -21,13 +23,15 @@
 
 /* Styling applies only if there are no columns */
 .column-list {
-    gap: 2rem;
-    height: 92%;
+    height: 94%;
     display: grid;
+    column-gap: 2rem;
     place-items: center;
     grid-template-rows: 1fr;
+    grid-template-columns: 0px; // might update later
     // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
-    // grid-template-columns: repeat(auto-fit, minmax(17.5em, 18.33em));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(17.5em, 18.33em);
 
     @media (max-width: query.$breakpoint-mobile) {
         // < ----- ONCE A COLUMN IS ADDED : SET THIS GRID LAYOUT ------ >
@@ -35,6 +39,12 @@
         // padding: 2rem;
         // grid-template-columns: repeat(4, minmax(225px, 15.625em)); // mobile
     }
+}
+
+.column-list:before,
+.column-list:after {
+    content: "";
+    width: 0px; // might update later
 }
 
 .empty {
@@ -45,15 +55,6 @@
         word-spacing: 1px;
     }
 }
-
-// .active {
-//     display: block;
-// }
-
-// once a column is added to a board view, add class to empty div
-// .inactive {
-//     display: none;
-// }
 
 .view {
     margin-top: auto;

@@ -21,15 +21,15 @@ export const boardViews = {
       name: "Marketing Plan",
       columns: [
         {
-          name: "Todo",
+          name: "Incomplete",
           tasks: [],
         },
         {
-          name: "Doing",
+          name: "In Progress",
           tasks: [],
         },
         {
-          name: "Done",
+          name: "Completed",
           tasks: [],
         },
       ],
@@ -53,6 +53,8 @@ export const boardViews = {
     },
   ],
 };
+
+// consider possibly creating a task template for the board columns' tasks below:
 
 // for each board object, we will create a custom list item (<li/>) containing icon & paragraph tag with link inside containing boards Name.
 boardViews.boards.forEach((board) => {
@@ -83,4 +85,6 @@ boardViews.boards.forEach((board) => {
   listItem.appendChild(svg);
   listItem.appendChild(paragraph);
   list[0].insertBefore(listItem, createBoard);
+
+  // currentView(board);
 });
