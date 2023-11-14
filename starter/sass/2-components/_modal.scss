@@ -1,0 +1,166 @@
+@use "../3-helpers/mixins" as mixins;
+.modal {
+    // top: 10%;
+    // left: 50%;
+    // border: none;
+    // max-width: 400px;
+    // z-index: 60000;
+    // padding: 20px 30px;
+    // min-height: 450px;
+    // max-height: 80%;
+    // box-sizing: border-box;
+    // margin-left: -200px;
+    // border-radius: 8px;
+    // background-color: white;
+    // box-shadow: 0 0 1em rgb(0, 0, 0, 0.3);
+
+    width: 365px; // setting this for now since all the modal views on 365px look good and don't look crammed
+    margin: auto; // aligns horizontally
+    border: none;
+    padding: 1.5em;
+    // max-width: 410px;
+    place-self: center; // aligns vertically ( for some reason isn't aligning horizontally; says this element isn't a grid item but is )
+    background: #fff;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.3);
+    border-radius: 4px;
+
+    .modal::backdrop {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    &-view {
+        display: flex;
+        position: relative;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        justify-content: space-between;
+    }
+
+    &-heading {
+        font-size: 1.25em;
+        max-width: 300px;
+    }
+
+    &-text {
+        color: var(--color-text);
+        font-size: 75%;
+        line-height: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__description {
+        margin-bottom: 2rem;
+    }
+}
+
+.modal.on {
+    display: block;
+}
+
+// Modal Overlay
+.modal-js-overlay {
+    background: #444;
+    opacity: 0.8;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 1000px;
+    z-index: 20000;
+    left: 0px;
+}
+
+// Task Container
+.task-container {
+    @include mixins.taskContStyles;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// Checkbox Container & Label
+.chkbox-container {
+    margin: 1rem 0;
+    display: flex;
+    padding: 1em;
+    font-size: 0.75em;
+    background: #f4f7fd;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.chkbox-container label {
+    margin-left: 0.5rem;
+}
+
+// Task Label Info & Status ( Dropdown )
+.task-label {
+    font-size: 0.75rem;
+}
+
+.task-status {
+    width: 100%;
+    height: 2.2em;
+    border: 1px #828fa329 solid;
+    display: block;
+    margin-top: 0.5rem;
+    border-radius: 3px;
+}
+
+// input ~ the checkbox
+input#option {
+    accent-color: #635fc7; /*  Changing default checkbox color  */
+}
+
+input[type="checkbox"]:checked + .label {
+    /* cross out subtask when checked */
+    color: #828fa3;
+    text-decoration: line-through;
+}
+
+// Task Options Dropdown
+.dropdown ul {
+    display: none;
+    margin: 10px;
+    padding: 0;
+    z-index: 1;
+    font-size: 0.75em;
+    list-style: none;
+
+    top: 3em;
+    right: -0.75rem;
+    position: absolute;
+    box-shadow: 0 0 1em rgb(0 0 0 / 30%);
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.dropdown ul li:hover {
+    background: #f4f7fd;
+}
+
+.dropdown:hover ul {
+    display: block;
+}
+
+.dropdown ul li {
+    width: 9em;
+    padding: 5px;
+}
+
+.dropdown ul li:last-child {
+    color: red;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.task-actions {
+    display: grid;
+    margin-top: 1em;
+    justify-content: right;
+
+    & span {
+        color: var(--color-text);
+    }
+}

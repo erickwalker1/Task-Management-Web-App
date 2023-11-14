@@ -1,90 +1,158 @@
-export const boardViews = {
-  boards: [
-    {
-      name: "Platform Launch",
-      columns: [
-        {
-          name: "Todo",
-          tasks: [],
-        },
-        {
-          name: "Doing",
-          tasks: [],
-        },
-        {
-          name: "Done",
-          tasks: [],
-        },
-      ],
-    },
-    {
-      name: "Marketing Plan",
-      columns: [
-        {
-          name: "Incomplete",
-          tasks: [],
-        },
-        {
-          name: "In Progress",
-          tasks: [],
-        },
-        {
-          name: "Completed",
-          tasks: [],
-        },
-      ],
-    },
-    {
-      name: "Roadmap",
-      columns: [
-        {
-          name: "Now",
-          tasks: [],
-        },
-        {
-          name: "Next",
-          tasks: [],
-        },
-        {
-          name: "Later",
-          tasks: [],
-        },
-      ],
-    },
-  ],
+import { Task } from "./views/taskView.js";
+
+// this returns array of board objects ( fetched it from the data.json file )
+export const getBoards = async () => {
+  let response = await fetch("./starter/js/data.json");
+  let data = await response.json();
+  let boards = data.boards;
+  return boards;
 };
 
-// consider possibly creating a task template for the board columns' tasks below:
+export const template = (view) => {
+  let boardView = document.getElementsByClassName("boards-list")[0];
+  getBoards().then((boards) =>
+    boards.forEach((board) => {
+      if (board.name === view) {
+        // for each column object (Line 7, 72, & 182 ~ "data.json" file) in the current boards' columns array, create and render
+        board.columns.forEach((column) => {
+          // generates a random color for our color code on page load
+          let randomColor = `#${Math.floor(Math.random() * 16777215).toString(
+            16
+          )}`;
 
-// for each board object, we will create a custom list item (<li/>) containing icon & paragraph tag with link inside containing boards Name.
-boardViews.boards.forEach((board) => {
-  let link = document.createElement("a");
-  let paragraph = document.createElement("p");
-  let listItem = document.createElement("li");
-  let list = document.getElementsByClassName("list");
-  let createBoard = document.getElementById("board-create");
-  let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          // <!--- Color Status Code --->
+          let colorCode = Object.assign(document.createElement("span"), {
+            className: "column__color-code",
+          });
+          colorCode.style.backgroundColor = randomColor;
 
-  link.className = "list-link";
-  paragraph.className = "list__paragraph";
-  listItem.className = "list__item";
+          // <!--- Column Container | Initial BG ➡️ "#e4ebfa"; ➡️➡️ IF (Column Contains An Array Of Tasks) set background = "fff"  --->
+          let columnCont = Object.assign(document.createElement("ul"), {
+            className: "column",
+          });
 
-  svg.appendChild(path);
-  svg.classList.add("icon-board");
-  svg.setAttribute("width", "16");
-  svg.setAttribute("height", "16");
-  path.setAttribute(
-    "d",
-    "M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.334 2.89V7.11h8.445Zm4.889-1.333H11.11v4.444h3.556V5.778Zm0 5.778H11.11v3.11h2a1.556 1.556 0 0 0 1.556-1.555v-1.555Zm0-7.112V2.89a1.555 1.555 0 0 0-1.556-1.556h-2v3.111h3.556Z"
+          // <!--- Column Status Container --->
+          let columnStatusCont = Object.assign(document.createElement("div"), {
+            className: "column__status-container",
+          });
+
+          // <!--- Appending Everything To Board View --->
+          columnStatusCont.append(colorCode, column.name);
+          columnCont.append(columnStatusCont);
+          boardView.append(columnCont);
+
+          // <!--- CASE ~ If Column Is Empty ( Has No Task Objects ) Generate Placeholder Container --->
+          if (column.tasks.length < 1) {
+            let addTaskCont = Object.assign(document.createElement("div"), {
+              className: "column__add-task-container",
+            });
+            let btnAddTask = Object.assign(document.createElement("button"), {
+              className: "btn-add-task",
+              innerText: `+ Add Task`,
+            });
+
+            // Event Listeners (Hover) For Generated Placeholder Containers
+            addTaskCont.addEventListener("mouseover", (event) => {
+              event.target.style.cursor = "pointer";
+              setTimeout(() => {
+                event.target.style.boxShadow =
+                  "1px 1px 15px -2px rgba(0,0,0,0.11)";
+                event.target.style.animation = "hovered, .5s ease-in-out";
+              }, "100");
+            });
+            addTaskCont.addEventListener("mouseout", (event) => {
+              setTimeout(() => {
+                event.target.style.boxShadow = `0px 1px 11px -4px rgba(0, 0, 0, 0.11)`;
+                event.target.style.animation = "1s ease-in-out";
+              }, "100");
+            });
+            // <!--- Appending --->
+            addTaskCont.append(btnAddTask);
+            columnCont.append(addTaskCont);
+          }
+          // Testing | Logging Each Column ("Status" Containers)
+          console.log(column);
+
+          // <!--- Looping Column's Task Array Elements | Creating Task Template For Each One  --->
+          column.tasks.forEach((task) => {
+            let totalSubtsks = Object.assign(document.createElement("span"), {
+              className: "total-subtsks",
+              innerText: task.subtasks.length,
+            });
+
+            let taskDesc = Object.assign(document.createElement("p"), {
+              className: "tsk-desc",
+              innerText: task.title,
+            });
+            let taskSubtsk = Object.assign(document.createElement("p"), {
+              className: "tsk-subtsks",
+            });
+            let checked = Object.assign(document.createElement("span"), {
+              className: "chckd",
+              innerText: 0, // placeholder ( once user checks the subtask off meaning he/she has completed it, update state)
+            });
+            let taskContainer = Object.assign(document.createElement("div"), {
+              className: "task-container",
+            });
+
+            // <!--- Task Modal Blueprint --->
+            const TaskModal = new Task(
+              task.title,
+              task.description,
+              task.status,
+              task.subtasks
+            );
+
+            // <!--- "Appending Task Container (and its child elements) To Current Column Status List"  --->
+            taskSubtsk.append(
+              checked,
+              " ",
+              "of",
+              " ",
+              totalSubtsks,
+              " ",
+              "subtasks"
+            );
+            taskContainer.append(taskDesc, taskSubtsk);
+            columnCont.append(taskContainer);
+
+            // <!--- Task Container: View Task Listener | Generates Task Modal For Every Task --->
+            taskContainer.addEventListener("click", () => {
+              TaskModal.generateModal();
+            });
+
+            // Testing
+            console.log(task);
+          });
+        });
+        // <!--- Placeholder "Add Column" Container   --->
+        let btnAddCol = Object.assign(document.createElement("button"), {
+          className: "btn-add-column",
+          innerText: "+ New Column",
+        });
+        let addColCont = Object.assign(document.createElement("div"), {
+          className: "column__container-tba",
+        });
+
+        // <!--- "Placeholder Container Hover Listener "  --->
+        addColCont.addEventListener("mouseover", (event) => {
+          event.target.style.cursor = "pointer";
+          setTimeout(() => {
+            event.target.style.boxShadow = "1px 1px 15px -2px rgba(0,0,0,0.11)";
+            event.target.style.animation = "hovered, .5s ease-in-out";
+          }, "100");
+        });
+        addColCont.addEventListener("mouseout", (event) => {
+          setTimeout(() => {
+            event.target.style.boxShadow = `0px 1px 11px -4px rgba(0, 0, 0, 0.11)`;
+            event.target.style.animation = "1s ease-in-out";
+          }, "100");
+        });
+
+        // <!--- "Append Elements (container & btn) To Current Board"  --->
+        addColCont.append(btnAddCol);
+        boardView.append(addColCont);
+      }
+    })
   );
-
-  link.href = "#";
-  link.textContent = `${board.name}`;
-  paragraph.appendChild(link);
-  listItem.appendChild(svg);
-  listItem.appendChild(paragraph);
-  list[0].insertBefore(listItem, createBoard);
-
-  // currentView(board);
-});
+};

@@ -1,12 +1,29 @@
-input[type="checkbox"] {
-    width: 0;
-    height: 0;
-    display: none;
-    // visibility: hidden;
+:root {
+    --color-subtask-bg: #e4ebfa;
+}
+
+.subtask {
+    width: 100%;
+    height: 3em;
+    margin: 1em 0;
+    display: flex;
+    padding: 1em 1em;
+    align-items: center;
+    border-radius: 3px;
+    background-color: var(--color-subtask-bg);
+
+    &__cb {
+        display: block;
+        margin-right: 0.5em;
+    }
+
+    &__container {
+        display: flex;
+    }
 }
 
 // container that holds toggle button
-label {
+.theme-label {
     float: right;
     width: 48px;
     height: 23px;
@@ -15,23 +32,38 @@ label {
     background: var(--color-primary);
     text-indent: -9999px;
     border-radius: 100px;
+
+    // white toggle button
+    &:after {
+        top: 3.5px;
+        left: 3px;
+        width: 16px;
+        height: 16px;
+        content: "";
+        position: absolute;
+        transition: 0.3s;
+        background: #fff;
+        border-radius: 90px;
+    }
 }
 
-// white toggle button
-label:after {
-    top: 3.5px;
-    left: 3px;
-    width: 16px;
-    height: 16px;
-    content: "";
-    position: absolute;
-    transition: 0.3s;
-    background: #fff;
-    border-radius: 90px;
+.toggle-container > input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    display: none;
 }
 
-// once box is checked, change label color
-input:checked + label {
+label:active:after {
+    width: 45px;
+}
+
+// once checkbox is checked, strike through subtask
+input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+}
+
+// once checkbox is checked, change label color
+input:first-child:checked + #circle {
     background: var(--color-primary);
 }
 
@@ -39,8 +71,4 @@ input:checked + label {
 input:checked + label:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
-}
-
-label:active:after {
-    width: 45px;
 }

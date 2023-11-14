@@ -1,4 +1,5 @@
 @use "../0-base/queries" as query;
+@use "../3-helpers/mixins" as mixins;
 
 .main {
     padding: 2rem 0;
@@ -22,7 +23,7 @@
 }
 
 /* Styling applies only if there are no columns */
-.column-list {
+.boards-list {
     height: 94%;
     display: grid;
     column-gap: 2rem;
@@ -41,8 +42,8 @@
     }
 }
 
-.column-list:before,
-.column-list:after {
+.boards-list:before,
+.boards-list:after {
     content: "";
     width: 0px; // might update later
 }
@@ -59,4 +60,31 @@
 .view {
     margin-top: auto;
     margin-bottom: 2rem;
+}
+
+.column {
+    width: 100%;
+    height: 100%;
+
+    &__status {
+        @include mixins.columnStatus;
+    }
+
+    &__color-code {
+        @include mixins.colorCode;
+    }
+
+    &__container-tba {
+        @include mixins.addColContStyles;
+    }
+
+    &__add-task-container {
+        @include mixins.addTaskContStyles;
+    }
+}
+
+// <!--- Task Subtask Styling --->
+.tsk-subtsks {
+    font-size: 0.75rem;
+    margin-top: 1rem;
 }

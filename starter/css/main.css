@@ -26,7 +26,7 @@ html {
 }
 html[data-theme=dark] {
   --color-main: #20212c;
-  --color-line: #3e3f4e;
+  --color-line: #25252f;
   --color-light: #2b2c37;
   --color-dark: #fff;
 }
@@ -117,7 +117,7 @@ body {
   scrollbar-width: none;
 }
 /* Styling applies only if there are no columns */
-.column-list {
+.boards-list {
   height: 94%;
   display: grid;
   column-gap: 2rem;
@@ -127,8 +127,8 @@ body {
   grid-auto-flow: column;
   grid-auto-columns: minmax(17.5em, 18.33em);
 }
-.column-list:before,
-.column-list:after {
+.boards-list:before,
+.boards-list:after {
   content: "";
   width: 0px;
 }
@@ -145,6 +145,53 @@ body {
 .view {
   margin-top: auto;
   margin-bottom: 2rem;
+}
+
+.column {
+  width: 100%;
+  height: 100%;
+}
+.column__status {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.column__color-code {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+.column__container-tba {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: 1.15rem;
+  margin-top: 4.5rem;
+  box-shadow: 0px 1px 11px -4px rgba(0, 0, 0, 0.11);
+  align-items: center;
+  border-radius: 5px;
+  justify-content: space-evenly;
+  background-color: var(--color-main);
+}
+.column__add-task-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: 1.15rem;
+  margin-top: 1rem;
+  box-shadow: 0px 1px 11px -4px rgba(0, 0, 0, 0.11);
+  align-items: center;
+  border-radius: 5px;
+  justify-content: space-evenly;
+  background-color: var(--color-main);
+}
+
+.tsk-subtsks {
+  font-size: 0.75rem;
+  margin-top: 1rem;
 }
 
 .header {
@@ -350,6 +397,18 @@ body {
 .btn-column {
   margin: 1rem 7rem;
 }
+.btn-add-task {
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-main);
+}
+.btn-add-column {
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
 .btn-toggle {
   cursor: pointer;
   margin: 0 1rem 0 0.3rem;
@@ -422,13 +481,64 @@ body {
   margin-right: 1rem;
 }
 
-input[type=checkbox] {
-  width: 0;
-  height: 0;
-  display: none;
+.modal-close {
+  width: 18px;
+  height: 18px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: none;
+}
+.modal-close:before, .modal-close:after {
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  content: "";
+  position: absolute;
+  background: #828fa3;
+  border-radius: 4px;
+}
+.modal-close::before {
+  transform: rotate(45deg);
+}
+.modal-close::after {
+  transform: rotate(-45deg);
+}
+.modal-close span {
+  display: block;
+}
+.modal-delete, .modal-edit {
+  padding: 5px;
+}
+.modal-delete, .modal-edit, .modal-close {
+  cursor: pointer;
 }
 
-label {
+:root {
+  --color-subtask-bg: #e4ebfa;
+}
+
+.subtask {
+  width: 100%;
+  height: 3em;
+  margin: 1em 0;
+  display: flex;
+  padding: 1em 1em;
+  align-items: center;
+  border-radius: 3px;
+  background-color: var(--color-subtask-bg);
+}
+.subtask__cb {
+  display: block;
+  margin-right: 0.5em;
+}
+.subtask__container {
+  display: flex;
+}
+
+.theme-label {
   float: right;
   width: 48px;
   height: 23px;
@@ -438,8 +548,7 @@ label {
   text-indent: -9999px;
   border-radius: 100px;
 }
-
-label:after {
+.theme-label:after {
   top: 3.5px;
   left: 3px;
   width: 16px;
@@ -451,7 +560,21 @@ label:after {
   border-radius: 90px;
 }
 
-input:checked + label {
+.toggle-container > input[type=checkbox] {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+label:active:after {
+  width: 45px;
+}
+
+input[type=checkbox]:checked + label {
+  text-decoration: line-through;
+}
+
+input:first-child:checked + #circle {
   background: var(--color-primary);
 }
 
@@ -460,8 +583,172 @@ input:checked + label:after {
   transform: translateX(-100%);
 }
 
-label:active:after {
-  width: 45px;
+:root {
+  --select-border: #e4ebfa;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+
+select {
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--select-border);
+  outline: none;
+  padding: 0.5em 1em 0.5em 0.5em;
+  font-size: inherit;
+  appearance: none;
+  margin-top: 0.5rem;
+  font-family: inherit;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.modal {
+  width: 365px;
+  margin: auto;
+  border: none;
+  padding: 1.5em;
+  place-self: center;
+  background: #fff;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+.modal .modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal-view {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+}
+.modal-heading {
+  font-size: 1.25em;
+  max-width: 300px;
+}
+.modal-text {
+  color: var(--color-text);
+  font-size: 75%;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+}
+.modal__description {
+  margin-bottom: 2rem;
+}
+
+.modal.on {
+  display: block;
+}
+
+.modal-js-overlay {
+  background: #444;
+  opacity: 0.8;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 1000px;
+  z-index: 20000;
+  left: 0px;
+}
+
+.task-container {
+  border: none;
+  height: max-content;
+  margin: 1.5rem 0;
+  padding: 1.25rem 1rem;
+  background: #fff;
+  box-shadow: 0px 3px 8px -1px rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+}
+.task-container:hover {
+  cursor: pointer;
+}
+
+.chkbox-container {
+  margin: 1rem 0;
+  display: flex;
+  padding: 1em;
+  font-size: 0.75em;
+  background: #f4f7fd;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.chkbox-container label {
+  margin-left: 0.5rem;
+}
+
+.task-label {
+  font-size: 0.75rem;
+}
+
+.task-status {
+  width: 100%;
+  height: 2.2em;
+  border: 1px rgba(130, 143, 163, 0.1607843137) solid;
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 3px;
+}
+
+input#option {
+  accent-color: #635fc7; /*  Changing default checkbox color  */
+}
+
+input[type=checkbox]:checked + .label {
+  /* cross out subtask when checked */
+  color: #828fa3;
+  text-decoration: line-through;
+}
+
+.dropdown ul {
+  display: none;
+  margin: 10px;
+  padding: 0;
+  z-index: 1;
+  font-size: 0.75em;
+  list-style: none;
+  top: 3em;
+  right: -0.75rem;
+  position: absolute;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.dropdown ul li:hover {
+  background: #f4f7fd;
+}
+
+.dropdown:hover ul {
+  display: block;
+}
+
+.dropdown ul li {
+  width: 9em;
+  padding: 5px;
+}
+
+.dropdown ul li:last-child {
+  color: red;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.task-actions {
+  display: grid;
+  margin-top: 1em;
+  justify-content: right;
+}
+.task-actions span {
+  color: var(--color-text);
 }
 
 /*# sourceMappingURL=main.css.map */

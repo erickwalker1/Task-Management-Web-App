@@ -1,0 +1,25 @@
+@use "../0-base/reset" as reset;
+
+:root {
+    --select-border: #e4ebfa;
+    --select-focus: blue;
+    --select-arrow: var(--select-border);
+}
+
+select {
+    width: 100%;
+    margin: 0;
+    border: 1px solid var(--select-border);
+    outline: none;
+    padding: 0.5em 1em 0.5em 0.5em;
+    font-size: inherit;
+    appearance: none;
+    margin-top: 0.5rem;
+    font-family: inherit;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+select::-ms-expand {
+    display: none;
+}
