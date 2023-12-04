@@ -1,4 +1,5 @@
 @use "../3-helpers/mixins" as mixins;
+@use "../0-base/typography" as typo;
 .modal {
     // top: 10%;
     // left: 50%;
@@ -31,21 +32,21 @@
     &-view {
         display: flex;
         position: relative;
+        font-size: 1.25rem; // 20px
         align-items: center;
         margin-bottom: 0.5rem;
         justify-content: space-between;
     }
 
     &-heading {
-        font-size: 1.25em;
         max-width: 300px;
     }
 
     &-text {
         color: var(--color-text);
-        font-size: 75%;
+        margin: 1rem 0;
+        font-size: 81.25%; // 13px
         line-height: 1.5rem;
-        margin-bottom: 1rem;
     }
 
     &__description {
@@ -82,7 +83,7 @@
     margin: 1rem 0;
     display: flex;
     padding: 1em;
-    font-size: 0.75em;
+    font-weight: var(--font-weight-bld);
     background: #f4f7fd;
     align-items: center;
     border-radius: 3px;
@@ -162,5 +163,14 @@ input[type="checkbox"]:checked + .label {
 
     & span {
         color: var(--color-text);
+    }
+}
+
+// Subtask Checklist
+.subtsk {
+    font-size: 75%;
+    &__heading {
+        color: var(--color-text);
+        font-weight: var(--font-weight-md);
     }
 }

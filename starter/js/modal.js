@@ -118,7 +118,7 @@ export const template = (view) => {
 
             // <!--- Task Container: View Task Listener | Generates Task Modal For Every Task --->
             taskContainer.addEventListener("click", () => {
-              TaskModal.generateModal();
+              TaskModal.renderModal();
             });
 
             // Testing

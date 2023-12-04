@@ -12,6 +12,8 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
   --font-primary: "Plus Jakarta Sans", sans-serif;
+  --font-weight-md: 500;
+  --font-weight-bld: 700;
   --color-white: #fff;
   --color-primary: #635fc7;
   --color-secondary: #a8a4ff;
@@ -482,6 +484,7 @@ body {
 }
 
 .modal-close {
+  cursor: pointer;
   width: 18px;
   height: 18px;
   border: 0;
@@ -512,7 +515,7 @@ body {
 .modal-delete, .modal-edit {
   padding: 5px;
 }
-.modal-delete, .modal-edit, .modal-close {
+.modal-delete, .modal-edit {
   cursor: pointer;
 }
 
@@ -623,19 +626,19 @@ select::-ms-expand {
 .modal-view {
   display: flex;
   position: relative;
+  font-size: 1.25rem;
   align-items: center;
   margin-bottom: 0.5rem;
   justify-content: space-between;
 }
 .modal-heading {
-  font-size: 1.25em;
   max-width: 300px;
 }
 .modal-text {
   color: var(--color-text);
-  font-size: 75%;
+  margin: 1rem 0;
+  font-size: 81.25%;
   line-height: 1.5rem;
-  margin-bottom: 1rem;
 }
 .modal__description {
   margin-bottom: 2rem;
@@ -673,7 +676,7 @@ select::-ms-expand {
   margin: 1rem 0;
   display: flex;
   padding: 1em;
-  font-size: 0.75em;
+  font-weight: var(--font-weight-bld);
   background: #f4f7fd;
   align-items: center;
   border-radius: 3px;
@@ -749,6 +752,14 @@ input[type=checkbox]:checked + .label {
 }
 .task-actions span {
   color: var(--color-text);
+}
+
+.subtsk {
+  font-size: 75%;
+}
+.subtsk__heading {
+  color: var(--color-text);
+  font-weight: var(--font-weight-md);
 }
 
 /*# sourceMappingURL=main.css.map */

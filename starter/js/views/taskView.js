@@ -1,4 +1,4 @@
-const modal = document.getElementById("modal");
+export const modal = document.getElementById("modal");
 export class Task {
   constructor(title, description, status, subtasks) {
     this.title = title;
@@ -7,17 +7,16 @@ export class Task {
     this.subtasks = subtasks; // this is returning [object Object] -- not sure why
   }
 
-  // <!--- Closes Modal --->
-  generateEventListener(className) {
-    document
-      .querySelector(`${className}`)
-      .addEventListener("click", (event) => {
-        modal.close();
-      });
+  // <!--- Close Modal --->
+  closeModal() {
+    document.body.addEventListener("click", (event) => {
+      const target = event.target.closest(".modal-close");
+      if (target) modal.close();
+    });
   }
 
-  // <!--- Renders Modal Template --->
-  generateModal() {
+  // <!--- Modal Template --->
+  renderModal() {
     modal.innerHTML = `
     <section class="modal-view">
     <p class="modal-heading">
@@ -33,8 +32,8 @@ export class Task {
     ${this.description}
   </p>
 
-  <section class="subtsk-list">
-    <p class="text subtsk-txt">
+  <section class="subtsk">
+    <p class="text subtsk__heading">
       <!--Subtasks((# of checkboxes ::checked ) of (total # of "subtasks" checkboxes of each task view ))-->
       Subtasks (2 of ${this.subtasks.length})
     </p>
@@ -76,7 +75,7 @@ export class Task {
     // <!--- Opening Modal On Usr Click Event | Line ?? Modal.Js --->
     modal.show();
     // <!--- Modal 'Close' Button Event | Line 16 --->
-    this.generateEventListener(`.close-button`);
+    this.closeModal(`.close-button`);
   }
 }
 // <!--- Modal Dropdown | Keep For Now --->
